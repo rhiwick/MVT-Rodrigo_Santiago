@@ -8,8 +8,15 @@ from vistas.models import Familiar
 from django.template import Template, Context, loader
 
 
+# def inicio(request):
+#     principal = loader.get_template('inicio.html')
+#     nombre = 'Santiago Navalon'
+#     nombre2 = "Rodrigo Gimenez"
+#     render1 = principal.render({'nombre': nombre, 'nombre2': nombre2})
+#     return HttpResponse(render1)
+
 def inicio(request):
-    ...
+    return render(request, "index.html")
 
 
 def mi_template(request):
