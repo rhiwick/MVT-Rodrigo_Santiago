@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime
 
 from django.shortcuts import render
-from vistas.models import Familiar
+from vistas.models import Familiar, Stock
 
 from django.template import Template, Context, loader
 
@@ -57,3 +57,7 @@ def vista_familiar(request):
     lista_familiar = Familiar.objects.all()
     render = template.render({'lista_familiar': lista_familiar})
     return HttpResponse(render)
+
+
+def crear_producto(request):#, producto_cia, producto_codigo, producto_descripcion)
+    return render(request, 'crear_stock.html')
