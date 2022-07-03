@@ -32,6 +32,9 @@ def mi_template(request):
     
     return HttpResponse(render1)
 
+def index(request):
+    return render(request, "index.html")
+
 
     
 def crear_familiar(request, nombre_familiar, edad_familiar, documento_familiar):
