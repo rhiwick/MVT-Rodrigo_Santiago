@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+	<gallery>
+		<!--
+
+					dfGallery
+			
+			Author	: G.S.Navin Raj Kumar
+			URL		: http://dezinerfolio.com
+			Date	: 14-June-2007
+			Version : 1.0b
+
+			PLEASE READ THE DOCUMENTATION CAREFULLY BEFORE MODIFYING THIS FILE.
+
+		-->
+		<!-- configure the gallery in this xml-node -->
+		<config>
+
+			<!-- set the title of the album -->
+			<title>Your Photos</title>
+
+			<!-- set the location of the thumbnails relative to the gallery.swf -->
+			<thumbnail_dir>images/photosgallery/thumbs/</thumbnail_dir>
+			
+			<!-- set the actlocation of the actual high-res images relative to the gallery.swf -->
+			<image_dir>images/photosgallery/</image_dir>
+			
+			<!-- the time interval for each image to display, this value is in seconds
+			default value : 5
+			-->
+			<slideshow_interval>5</slideshow_interval>
+
+			<!-- pause slideshow at start
+			default value : false
+			-->
+			<pause_slideshow>true</pause_slideshow>
+
+			<!-- set true if you want the application to scale the images while using RSS feeds
+			default value : true
+			-->
+			<rss_scale_images>true</rss_scale_images>
+
+			<!-- set the path of the mp3 file that should loop as a background music while playing the slideshow.
+			default value : none
+			-->
+			<background_music>none</background_music>
+
+			<!-- percentage of the volume to set while playing the music
+			default value : 50
+			-->
+			<background_music_volume>50</background_music_volume>
+
+			<!-- add links to images, and allow the views to click on images from flickr, picasa,and 
+			view the page where the actual image is found.
+			If you dont want views to visit the picasa, or flickr or other sites keep this value false.
+			default value : false
+			-->
+			<link_images>false</link_images>
+
+			<!--
+			Photographers will like to disable printscreen for their pictures
+			to increase the security of their photographs.
+			Set this value to true if you wish to disable print screen in the application.
+			While the application is running the print screen option will be completely disabled in 
+			all other applications that the visitor is using.
+
+			default value : false
+			-->
+			<disable_printscreen>false</disable_printscreen>
+		
+		</config>
+		
+
+
+
+		<!-- this node contains all the albums -->
+		<albums>
+				<album title="First Album" description="My first album description.">
+        <image title="My Image Name" date="21.04.08" thumbnail="image-1.jpg" image="image-1.jpg" link="images/photosgallery/thumbs/image-1.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-2.jpg" image="image-2.jpg" link="images/photosgallery/thumbs/image-2.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-3.jpg" image="image-3.jpg" link="images/photosgallery/thumbs/image-3.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-4.jpg" image="image-4.jpg" link="images/photosgallery/thumbs/image-4.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-5.jpg" image="image-5.jpg" link="images/photosgallery/thumbs/image-5.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-6.jpg" image="image-6.jpg" link="images/photosgallery/thumbs/image-6.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-7.jpg" image="image-7.jpg" link="images/photosgallery/thumbs/image-7.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-8.jpg" image="image-8.jpg" link="images/photosgallery/thumbs/image-8.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-9.jpg" image="image-9.jpg" link="images/photosgallery/thumbs/image-9.jpg" >Image description</image>
+        <image title="My Image Name" date="21.04.08" thumbnail="image-10.jpg" image="image-10.jpg" link="images/photosgallery/thumbs/image-10.jpg" >Image description</image>
+				</album>
+		</albums>
+
+		<!--  language support added in v 1.0b	-->
+		
+		<language>
+			<string id="please wait" value="Please wait" />
+			<string id="loading" value="Loading" />
+			<string id="previous page" value="Previous Page" />
+			<string id="page % of %" value="Page % of %" />
+			<string id="next page" value="Next Page" />
+		</language>
+
+	</gallery>

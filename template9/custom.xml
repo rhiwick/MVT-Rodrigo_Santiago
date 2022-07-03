@@ -1,0 +1,32 @@
+﻿<?xml version='1.0' encoding='UTF-8' ?>
+<header_vars>
+<graphics_color>FFFFFF</graphics_color>
+<animation_loop>no</animation_loop>
+<transition_time_seconds>5</transition_time_seconds>
+
+<header>
+	<text_header_h1 x_pos="50" y_pos="12" size="60" letter_spacing="0" text_color="FFFFFF"></text_header_h1>
+	<text_header_h2 x_pos="50" y_pos="70" size="55" letter_spacing="1.9" text_color="FFFFFF"></text_header_h2>	
+	<image>images/flashimages/your_image1.jpg</image>
+</header>	
+<header>
+	<text_header_h1 x_pos="350" y_pos="350" size="12" letter_spacing="1" text_color="FFFFFF">My  best photos...</text_header_h1>
+	<text_header_h2 x_pos="12" y_pos="70" size="50" letter_spacing="1" text_color="FFFFFF"></text_header_h2>	
+	<image>images/flashimages/your_image2.jpg</image>
+</header>	
+<header>
+	<text_header_h1 x_pos="15" y_pos="22" size="25" letter_spacing="17" text_color="FFFFFF">My Voyage</text_header_h1>
+	<text_header_h2 x_pos="15" y_pos="73" size="30" letter_spacing="3.2" text_color="FFFFFF"></text_header_h2>	
+	<image>images/flashimages/your_image3.jpg</image>
+</header>	
+<header>
+	<text_header_h1 x_pos="50" y_pos="12" size="60" letter_spacing="0" text_color="FFFFFF"></text_header_h1>
+	<text_header_h2 x_pos="50" y_pos="70" size="55" letter_spacing="1.9" text_color="FFFFFF"></text_header_h2>	
+	<image>images/flashimages/your_image1.jpg</image>
+</header>	
+
+<music_file loop="no" music_control="no" play_music="yes">sounds/music.mp3</music_file>
+<play_transition_sound_file>yes</play_transition_sound_file>
+<display_preload graphic_color="FFFFFF">yes</display_preload>
+<replay display="yes" x_pos="520" y_pos="380" size="10" letter_spacing="1" bgd_color="000000" text_color="FFFFFF"> Replay</replay>
+</header_vars>
