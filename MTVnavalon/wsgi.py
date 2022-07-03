@@ -1,5 +1,5 @@
 """
-WSGI config for entrega1gimeneznavalon project.
+WSGI config for MTVnavalon project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'entrega1gimeneznavalon.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MTVnavalon.settings')
 
 application = get_wsgi_application()
