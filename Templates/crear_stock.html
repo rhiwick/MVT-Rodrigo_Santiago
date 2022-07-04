@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>creacion de productos</title>
-</head>
-<body>
-    <p>
-      
-            crear producto
-        
-    </p>
-</body>
-</html>
+{% extends 'index.html' %}
+{% block titulo %}
+<title>Alta de Productos</title>
+{% endblock titulo %}
+
+{% block sub_titulo %}
+<h1 class="mt-4">Alta de productos</h1>
+{% endblock sub_titulo %}
+
+{% block sub_titulo_2 %}
+<li class="breadcrumb-item active">Completar todos los campos con *</li>
+{% endblock sub_titulo_2 %}
+
+{% block link %}href=""{% endblock link %}
+
+{% block campos %}
+<p>* Ingrese la cia</p>
+<p>* Ingrese Codigo Producto</p>
+<p>* Ingrese descripcion</p>
+{% endblock campos %}
