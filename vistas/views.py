@@ -1,6 +1,8 @@
 
 from django.http import HttpResponse
 from datetime import datetime
+from django import forms
+
 
 from django.shortcuts import render
 from vistas.models import Familiar, Stock
@@ -60,7 +62,12 @@ def vista_familiar(request):
 
 
 def crear_producto(request):
-
+#    productoCia =  forms.CharField()
+#    productoCodigo = forms.IntegerField()
+#    productoDescripcion = forms.IntegerField()
+#    productoCantidad = forms.IntegerField()
+#    productoCosto = forms.IntegerField()
+    
 #    if request.method == 'POST':
 #        producto = Stock(request.POST['productoCia'],request.POST['productoCodigo'], request.POST['productoDescripcion'],request.POST['productoCantidad'],request.POST['productoCosto']  )    
 #    #, producto_cia, producto_codigo, producto_descripcion)
