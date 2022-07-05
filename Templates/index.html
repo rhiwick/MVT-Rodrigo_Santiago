@@ -45,7 +45,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Modulos</div>
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href={% url 'index' %}>
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Inicio
                             </a>
@@ -126,7 +126,7 @@
                                     <div class="card-body">Maestros</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         
-                                        <a class="small text-white stretched-link" {% block link %}href="crear-stock"{% endblock link %}>Altas, baja y edicion</a>
+                                        <a class="small text-white stretched-link" {% block link %}<a class="nav-link" href={% url 'crear_producto' %}>{% endblock link %}>Altas, baja y edicion</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -161,6 +161,7 @@
                         </div>
                         <div class="card mb-4">
                             {% block campos %}Proyecto Final de Santiago Navalon y Rodrigo Gimenez{% endblock campos %}
+                         
                         </div>
                     </div>
                 </main>

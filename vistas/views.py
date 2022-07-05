@@ -59,5 +59,12 @@ def vista_familiar(request):
     return HttpResponse(render)
 
 
-def crear_producto(request):#, producto_cia, producto_codigo, producto_descripcion)
-    return render(request, 'crear_stock.html')
+def crear_producto(request):
+
+#    if request.method == 'POST':
+#        producto = Stock(request.POST['productoCia'],request.POST['productoCodigo'], request.POST['productoDescripcion'],request.POST['productoCantidad'],request.POST['productoCosto']  )    
+#    #, producto_cia, producto_codigo, producto_descripcion)
+#        producto.save()
+#        return render(request, '/crear_stock.html')
+#
+    return render(request,'crear_stock.html' )

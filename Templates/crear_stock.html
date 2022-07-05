@@ -14,7 +14,21 @@
 {% block link %}href=""{% endblock link %}
 
 {% block campos %}
-<p>* Ingrese la cia</p>
-<p>* Ingrese Codigo Producto</p>
-<p>* Ingrese descripcion</p>
+
+<body>
+    <form action="/crear_stock/" method = "POST"> {% csrf_token %}
+        <p>Nombre Compañía: <input type= 'text' name = 'productoCia'></p>
+        <p>Código de Producto: <input type= 'text' name = 'productoCodigo'></p>
+        <p>Descripción de Producto: <input type= 'text' name = 'productoDescripcion'></p>
+        <p>Cantidad de Producto: <input type= 'text' name = 'productoCantidad'></p>
+        <p>Costo Unitario Producto: <input type= 'text' name = 'productoCosto'></p>
+        <input type = 'submit' value = 'Ingresar'>
+        
+
+    </form>
+</body>
+
 {% endblock campos %}
+
+
+

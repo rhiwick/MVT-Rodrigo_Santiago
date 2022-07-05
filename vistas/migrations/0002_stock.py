@@ -18,6 +18,7 @@ class Migration(migrations.Migration):
                 ('producto_codigo', models.CharField(max_length=10)),
                 ('producto_descripcion', models.CharField(max_length=30)),
                 ('producto_cantidad', models.IntegerField(null=0)),
+                ('producto_costo', models.IntegerField(null=0)),
             ],
         ),
     ]

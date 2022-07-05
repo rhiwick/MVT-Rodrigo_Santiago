@@ -5,8 +5,8 @@ urlpatterns = [
     path('', inicio),
     path('fecha/', ver_fecha),
     path('mi-template/', mi_template),
-    path('index/', index),
-    path('crear-stock/', crear_producto),
+    path('index/', index, name= 'index'),
+    path('crear-stock/', crear_producto, name = 'crear_producto'),
     #path('saludo/<nombre>', saludo),
     path('crear/<nombre_familiar>/<edad_familiar>/<documento_familiar>/', crear_familiar),
     path('listado-familia/', vista_familiar)
