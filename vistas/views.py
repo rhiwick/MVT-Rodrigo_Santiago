@@ -75,5 +75,5 @@ def crearProducto(request):
             
             return render(request, 'crear_stock.html')
     else:
-        producto = crear_producto()
+        miProducto = crear_producto()
     return render(request,'crear_stock.html',{'miProducto':miProducto} )
