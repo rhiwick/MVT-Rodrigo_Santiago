@@ -16,7 +16,8 @@
 {% block campos %}
 
 <body>
-    <form action="/crear_stock/" method = "POST"> {% csrf_token %}
+    <form action="/crearProducto/" method = "POST"> 
+        {% csrf_token %}
         <p>Nombre Compañía: <input type= 'text' name = 'productoCia'></p>
         <p>Código de Producto: <input type= 'text' name = 'productoCodigo'></p>
         <p>Descripción de Producto: <input type= 'text' name = 'productoDescripcion'></p>

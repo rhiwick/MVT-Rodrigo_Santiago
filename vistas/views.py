@@ -2,6 +2,7 @@
 from django.http import HttpResponse
 from datetime import datetime
 from django import forms
+from vistas.forms import crear_producto
 
 
 from django.shortcuts import render
@@ -61,17 +62,18 @@ def vista_familiar(request):
     return HttpResponse(render)
 
 
-def crear_producto(request):
-#    productoCia =  forms.CharField()
-#    productoCodigo = forms.IntegerField()
-#    productoDescripcion = forms.IntegerField()
-#    productoCantidad = forms.IntegerField()
-#    productoCosto = forms.IntegerField()
-    
-#    if request.method == 'POST':
-#        producto = Stock(request.POST['productoCia'],request.POST['productoCodigo'], request.POST['productoDescripcion'],request.POST['productoCantidad'],request.POST['productoCosto']  )    
-#    #, producto_cia, producto_codigo, producto_descripcion)
-#        producto.save()
-#        return render(request, '/crear_stock.html')
-#
-    return render(request,'crear_stock.html' )
+def crearProducto(request):
+    if request.method == 'POST':
+        miProducto = crear_producto(request.POST)
+        print(miProducto)
+        if miProducto.is_valid:
+            informacion = miProducto.cleaned_data
+            
+            producto = Stock(productoCia = informacion['productoCia'],productoCodigo = informacion['productoCodigo'], productoDescripcion = informacion['productoDescripcion'],productoCantidad = informacion['productoCantidad'],productoCosto = informacion['productoCosto'])    
+            
+            producto.save()
+            
+            return render(request, 'crear_stock.html')
+    else:
+        producto = crear_producto()
+    return render(request,'crear_stock.html',{'miProducto':miProducto} )
