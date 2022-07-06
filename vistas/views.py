@@ -2,7 +2,7 @@
 from django.http import HttpResponse
 from datetime import datetime
 from django import forms
-from vistas.forms import crear_producto
+from vistas.forms import crear_producto, busqueda_producto
 
 
 from django.shortcuts import render
@@ -66,14 +66,34 @@ def crearProducto(request):
     if request.method == 'POST':
         miProducto = crear_producto(request.POST)
         print(miProducto)
-        if miProducto.is_valid:
+        if miProducto.is_valid():
             informacion = miProducto.cleaned_data
             
-            producto = Stock(productoCia = informacion['productoCia'],productoCodigo = informacion['productoCodigo'], productoDescripcion = informacion['productoDescripcion'],productoCantidad = informacion['productoCantidad'],productoCosto = informacion['productoCosto'])    
+            producto = Stock(productoCia = informacion['productoCia'],
+                             productoCodigo = informacion['productoCodigo'], 
+                             productoDescripcion = informacion['productoDescripcion'],
+                             productoCantidad = informacion['productoCantidad'],
+                             productoCosto = informacion['productoCosto'])    
             
             producto.save()
             
             return render(request, 'crear_stock.html')
     else:
         miProducto = crear_producto()
-    return render(request,'crear_stock.html',{'miProducto':miProducto} )
+    
+    return render(request,'crear_stock.html',{'miProducto':miProducto, } )
+
+def busquedaProducto(request):
+    id_producto = request.GET.get('productoCodigo')
+    productos_listado = Stock.objects.all()
+    
+    if id_producto:
+        productos_listado = Stock.objects.filter(productoCodigo=id_producto) 
+        
+    else:
+        productos_listado = Stock.objects.all()
+        form = busqueda_producto()
+    
+    form = busqueda_producto()
+    return render(request, 'busqueda_producto.html', {'form':form,'productos_listado':productos_listado} )
+

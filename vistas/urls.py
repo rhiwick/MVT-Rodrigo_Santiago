@@ -1,4 +1,4 @@
-from .views import inicio, ver_fecha, mi_template, vista_familiar, crear_familiar, index, crearProducto
+from .views import inicio, ver_fecha, mi_template, vista_familiar, crear_familiar, index, crearProducto,busquedaProducto
 from django.urls import path
 
 urlpatterns = [
@@ -9,5 +9,8 @@ urlpatterns = [
     path('crear-stock/', crearProducto, name = 'crear_producto'),
     #path('saludo/<nombre>', saludo),
     path('crear/<nombre_familiar>/<edad_familiar>/<documento_familiar>/', crear_familiar),
-    path('listado-familia/', vista_familiar)
+    path('listado-familia/', vista_familiar),
+    path('busqueda/' ,busquedaProducto, name = 'busqueda_producto')
+
+    
 ]

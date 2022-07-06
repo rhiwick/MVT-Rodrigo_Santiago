@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+{% block titulo %}
+<title>Alta de Productos</title>
+{% endblock titulo %}
+
+{% block sub_titulo %}
+<h1 class="mt-4">Alta de productos</h1>
+{% endblock sub_titulo %}
+
+{% block sub_titulo_2 %}
+<li class="breadcrumb-item active">Completar todos los campos con *</li>
+{% endblock sub_titulo_2 %}
+
+{% block link %}href=""{% endblock link %}
+
+{% block campos %}
+
+<body>
+    
+    <form action= {% url 'busqueda_producto' %}>
+        {{form}}
+
+        <button>Buscar</button>
+        
+        
+        <a class="nav-link" href={% url 'crear_producto' %}>
+            Ingresar
+        </a>   
+            {%for producto in productos_listado%}
+            <li>CODIGO: {{producto.productoCodigo}}, DESCRIPCION: {{producto.productoDescripcion}}</li>
+            {% endfor %}
+        </ul>
+{% comment "" %}
+    <form action="/buscar/" method = "GET">
+
+        <input type = 'text' name= 'productoCodigo' id = 'productoCodigo'>
+        <input type = 'submit' value = "Buscar"
+    </form>
+    {% endcomment %}
+</body>
+
+{% endblock campos %}
+
+
+
