@@ -1,12 +1,13 @@
 
+from email.policy import default
 from django.http import HttpResponse
 from datetime import datetime
 from django import forms
-from vistas.forms import crear_producto, busqueda_producto
+from vistas.forms import FormCrearProducto, FormBusquedaProducto
 
 
 from django.shortcuts import render
-from vistas.models import Familiar, Stock
+from vistas.models import Producto
 
 from django.template import Template, Context, loader
 
@@ -22,78 +23,44 @@ def inicio(request):
     return render(request, "index.html")
 
 
-def mi_template(request):
-    
-    template1 = loader.get_template('inicio.html')
-
-    nombre = 'Santiago Navalon'
-    nombre2 = "Rodrigo Gimenez"
-    #familiar = Familiar(nombre_familiar='Marcelo', edad_familiar=50)
-    #familiar.save()
-    render1 = template1.render(
-        {'nombre': nombre, 'nombre2': nombre2})
-    
-    return HttpResponse(render1)
-
 def index(request):
     return render(request, "index.html")
 
 
-    
-def crear_familiar(request, nombre_familiar, edad_familiar, documento_familiar):
-    creacion = loader.get_template('crear.html')
-    familiar = Familiar(nombre_familiar=nombre_familiar, edad_familiar=edad_familiar, documento_familiar=documento_familiar)
-    familiar.save()
-    diccionario = {'familiar':familiar}
-    documento = creacion.render(diccionario)
-    return HttpResponse(documento)
-    
-def ver_fecha(request):
-    fecha_actual = datetime.now()
-    return HttpResponse(f'fecha actual: {fecha_actual} ')
-
-
-
-def vista_familiar(request):
-    
-    template = loader.get_template('listado_familia.html')
-    lista_familiar = Familiar.objects.all()
-    render = template.render({'lista_familiar': lista_familiar})
-    return HttpResponse(render)
-
-
-def crearProducto(request):
+def crear_producto(request):
     if request.method == 'POST':
-        miProducto = crear_producto(request.POST)
-        print(miProducto)
-        if miProducto.is_valid():
-            informacion = miProducto.cleaned_data
+        form_crear_producto = FormCrearProducto(request.POST) #este crear producto es del form y la variable se deberia llamar form_crear_producto
+        if form_crear_producto.is_valid(): #
+            informacion = form_crear_producto.cleaned_data
             
-            producto = Stock(productoCia = informacion['productoCia'],
-                             productoCodigo = informacion['productoCodigo'], 
-                             productoDescripcion = informacion['productoDescripcion'],
-                             productoCantidad = informacion['productoCantidad'],
-                             productoCosto = informacion['productoCosto'])    
-            
+            producto = Producto(producto_cia = informacion['producto_cia'],
+                             producto_codigo = informacion['producto_codigo'], 
+                             producto_descripcion = informacion['producto_descripcion'],
+                             producto_costo = informacion['producto_costo'],
+                             producto_fecha = datetime.now(),
+                             producto_cantidad = 0
+                             )
+                             
             producto.save()
             
             return render(request, 'crear_stock.html')
     else:
-        miProducto = crear_producto()
+        form_crear_producto = FormCrearProducto()
     
-    return render(request,'crear_stock.html',{'miProducto':miProducto, } )
+    return render(request,'crear_stock.html',{'miProducto':form_crear_producto, } )
 
-def busquedaProducto(request):
-    id_producto = request.GET.get('productoCodigo')
-    productos_listado = Stock.objects.all()
+
+def busqueda_producto(request): #cambiar nombre por todo minuscula con guion bajo
+    id_producto = request.GET.get('producto_codigo') #nombre de busqueda y las variables en rojo tienen que ser en snakeeye
+    productos_listado = Producto.objects.all()
     
     if id_producto:
-        productos_listado = Stock.objects.filter(productoCodigo=id_producto) 
+        productos_listado = Producto.objects.filter(producto_codigo=id_producto)
         
     else:
-        productos_listado = Stock.objects.all()
-        form = busqueda_producto()
+        productos_listado = Producto.objects.all()
+        form = FormBusquedaProducto() #
     
-    form = busqueda_producto()
+    form = FormBusquedaProducto() #form vacio
     return render(request, 'busqueda_producto.html', {'form':form,'productos_listado':productos_listado} )
 
