@@ -25,7 +25,7 @@
         <p></p>
         <p>Resultado de la busqueda:</p>
             {%for producto in productos_listado%}
-            <li>Compañia: {{producto.producto_compania}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
+            <li>Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
             {% endfor %}
         </ul>
 {% comment "" %}
