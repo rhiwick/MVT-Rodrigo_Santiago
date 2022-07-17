@@ -64,3 +64,8 @@ def busqueda_producto(request): #cambiar nombre por todo minuscula con guion baj
     form = FormBusquedaProducto() #form vacio
     return render(request, 'busqueda_producto.html', {'form':form,'productos_listado':productos_listado} )
 
+def maestro_producto(request):
+    return render(request, 'maestro.html')
+
+def editar_producto(request):
+    return render(request, 'editar_producto.html')

@@ -98,14 +98,16 @@
                                     <div class="card-body">Maestros</div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
                                         
-                                        <a class="small text-white stretched-link" {% block link %}<a class="nav-link" href={% url 'crear_producto' %}>{% endblock link %}>Altas, baja y edicion</a>
+                                        <a class="small text-white stretched-link" {% block link %}<a class="nav-link" href={% url 'maestro' %}>{% endblock link %}>Altas, baja y edicion</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
                             </div>
                             
                         </div>
+                        {% block botones %}
                         <div class="card mb-4">
+                        {% endblock botones %}
                             {% block campos %}Proyecto Final de Santiago Navalon y Rodrigo Gimenez{% endblock campos %}
                          
                         </div>

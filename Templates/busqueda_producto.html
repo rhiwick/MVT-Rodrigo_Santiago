@@ -1,42 +1,50 @@
 {% extends 'index.html' %}
+
 {% block titulo %}
 <title>Busqueda de productos</title>
 {% endblock titulo %}
+
 
 {% block sub_titulo %}
 <h1 class="mt-4">Busqueda de productos</h1>
 {% endblock sub_titulo %}
 
+
 {% block sub_titulo_2 %}
 <li class="breadcrumb-item active">Introduzca un texto exacto o que contenga</li>
 {% endblock sub_titulo_2 %}
 
-{% block link %}href={% url 'crear_producto' %}>{% endblock link %}
+
+{% block link %}href={% url 'maestro' %}>{% endblock link %}
+
 
 {% block campos %}
-
 <body>
-    
+<p>
     <form action= {% url 'busqueda_producto' %}>
         {{form}}
-
         <button>Buscar</button>
-        <p></p>
-        <p></p>
-        <p>Resultado de la busqueda:</p>
-            {%for producto in productos_listado%}
-            <li>Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
-            {% endfor %}
-        </ul>
-{% comment "" %}
-    <form action="/buscar/" method = "GET">
-
-        <input type = 'text' name= 'productoCodigo' id = 'productoCodigo'>
-        <input type = 'submit' value = "Buscar"
     </form>
-    {% endcomment %}
-</body>
+</p>
+<p>
+    
+<p></p>
+<p></p>
+<p>Resultado de la busqueda:</p>
+<p>
+    {% if productos_listado %}
+    <ul>
+        {%for producto in productos_listado%}
+        <li>Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    No se encontraron datos. Reintente.
+    {% endif %}
 
+</p>
+
+</body>
 {% endblock campos %}
 
 
