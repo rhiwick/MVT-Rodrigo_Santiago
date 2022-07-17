@@ -77,21 +77,14 @@
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Esta logeado como:</div>
-                        Sistema de gestion de stock
+                        Sistema de gestion
                     </div>
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        {% block sub_titulo %}
-                        <h1 class="mt-4">Inicio</h1>
-                        {% endblock sub_titulo %}
-                        <ol class="breadcrumb mb-4">
-                            {% block sub_titulo_2 %}
-                            <li class="breadcrumb-item active">Elija un modulo para operar</li>
-                            {% endblock sub_titulo_2 %}
-                        </ol>
+                        <p></p>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
@@ -105,6 +98,15 @@
                             </div>
                             
                         </div>
+                        {% block sub_titulo %}
+                        <h1 class="mt-4">Sistema de almacenamiento y distribucion</h1>
+                        {% endblock sub_titulo %}
+                        <ol class="breadcrumb mb-4">
+                            {% block sub_titulo_2 %}
+                            <li class="breadcrumb-item active"></li>
+                            {% endblock sub_titulo_2 %}
+                        </ol>
+
                         {% block botones %}
                         <div class="card mb-4">
                         {% endblock botones %}
