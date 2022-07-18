@@ -2,7 +2,7 @@
 
 
 
-from .views import inicio, index, crear_producto, busqueda_producto, maestro_producto, editar_producto
+from .views import inicio, index, crear_producto, busqueda_producto, maestro_producto, editar_producto, eliminar_producto
 from django.urls import path
 
 urlpatterns = [
@@ -11,6 +11,7 @@ urlpatterns = [
     path('crear-stock/', crear_producto, name = 'crear_producto'),
     path('maestro/', maestro_producto, name = 'maestro'),
     path('editar_producto/', editar_producto, name = 'editar_producto'),
+    path('eliminar_producto/', eliminar_producto, name = 'eliminar_producto'),
     path('busqueda/' ,busqueda_producto, name = 'busqueda_producto')
 
     

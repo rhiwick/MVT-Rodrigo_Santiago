@@ -1,8 +1,6 @@
 
 from email.policy import default
-from django.http import HttpResponse
 from datetime import datetime
-from django import forms
 from vistas.forms import FormCrearProducto, FormBusquedaProducto
 
 
@@ -11,13 +9,6 @@ from vistas.models import Producto
 
 from django.template import Template, Context, loader
 
-
-# def inicio(request):
-#     principal = loader.get_template('inicio.html')
-#     nombre = 'Santiago Navalon'
-#     nombre2 = "Rodrigo Gimenez"
-#     render1 = principal.render({'nombre': nombre, 'nombre2': nombre2})
-#     return HttpResponse(render1)
 
 def inicio(request):
     return render(request, "index.html")
@@ -29,8 +20,8 @@ def index(request):
 
 def crear_producto(request):
     if request.method == 'POST':
-        form_crear_producto = FormCrearProducto(request.POST) #este crear producto es del form y la variable se deberia llamar form_crear_producto
-        if form_crear_producto.is_valid(): #
+        form_crear_producto = FormCrearProducto(request.POST)
+        if form_crear_producto.is_valid():
             informacion = form_crear_producto.cleaned_data
             
             producto = Producto(producto_cia = informacion['producto_cia'],
@@ -50,8 +41,8 @@ def crear_producto(request):
     return render(request,'crear_stock.html',{'miProducto':form_crear_producto, } )
 
 
-def busqueda_producto(request): #cambiar nombre por todo minuscula con guion bajo
-    id_producto = request.GET.get('producto_codigo') #nombre de busqueda y las variables en rojo tienen que ser en snakeeye
+def busqueda_producto(request):
+    id_producto = request.GET.get('producto_codigo')
     productos_listado = Producto.objects.all()
     
     if id_producto:
@@ -59,9 +50,9 @@ def busqueda_producto(request): #cambiar nombre por todo minuscula con guion baj
         
     else:
         productos_listado = Producto.objects.all()
-        form = FormBusquedaProducto() #
+        form = FormBusquedaProducto()
     
-    form = FormBusquedaProducto() #form vacio
+    form = FormBusquedaProducto()
     return render(request, 'busqueda_producto.html', {'form':form,'productos_listado':productos_listado} )
 
 def maestro_producto(request):
@@ -69,3 +60,10 @@ def maestro_producto(request):
 
 def editar_producto(request):
     return render(request, 'editar_producto.html')
+
+def eliminar_producto(request):
+    
+    
+    
+    
+    return render(request, 'eliminar_producto.html')
