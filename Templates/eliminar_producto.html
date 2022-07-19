@@ -1,4 +1,4 @@
-{% extends 'crear_stock.html' %}
+{% extends 'busqueda_producto.html' %}
 
 
 {% block titulo %}
@@ -15,14 +15,11 @@
 
 {% block link %}href={% url 'maestro' %}{% endblock link %}
 
-{% block campos %}
 
-<body>
-    
+{% block accion %}
+<form action= {% url 'eliminar_producto' %}>
+{% endblock accion %}
 
-</body>
-
-{% endblock campos %}
-
-
-
+{% block botones %}
+<a href={% url 'eliminar_producto' %}>Eliminar</a>
+{% endblock botones %}

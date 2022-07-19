@@ -1,4 +1,3 @@
-from mailbox import NoSuchMailboxError
 from django import forms
 
 class FormCrearProducto(forms.Form): #estos nombres tienen que ser por ejemplo: FormCrearProducto
@@ -9,5 +8,11 @@ class FormCrearProducto(forms.Form): #estos nombres tienen que ser por ejemplo: 
     producto_fecha = forms.DateField(required=False)#aca pondria required=False
     
 class FormBusquedaProducto(forms.Form):
+    producto_codigo = forms.CharField(max_length=30)
+    
+class FormEliminarProducto(forms.Form):
+    producto_codigo = forms.CharField(max_length=30)
+    
+class FormEditarProducto(forms.Form):
     producto_codigo = forms.CharField(max_length=30)
     

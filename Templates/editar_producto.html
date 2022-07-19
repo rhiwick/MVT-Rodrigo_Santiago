@@ -16,12 +16,72 @@
 {% block link %}href={% url 'maestro' %}{% endblock link %}
 
 {% block campos %}
+<p>
+    <form action= {% url 'editar_producto' %}>
 
-<body>
+        {{form}}
+        <button>Buscar</button>
+    </form>
+    </p>
+    <p>
     
+<p></p>
+<p></p>
+<p>Resultado de la busqueda:</p>
+<p>
+    {% if productos_listado %}
+    <ul>
+        {%for producto in productos_listado%}
 
+        <li>
+            <a href={% url 'editar_producto' %}>Editar</a>
+            Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}
+        
+        
+        
+        </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    No se encontraron datos. Reintente.
+    {% endif %}
+
+</p>
+
+
+    {% comment %}
+        
+<body>
+  
+    <p>
+        <form action= {% url 'eliminar_producto' %}>
+            {{form}} 
+            <button>Buscar</button>
+        </form>
+    </p>
+        
+    <p></p>
+    <p></p>
+    <p>Resultado de la busqueda:</p>
+    <p>
+        {% if productos_listado %}
+        <ul>
+            {%for producto in productos_listado%}
+            <li>
+                {{producto}}
+                <a href={% url 'editar_producto' producto.id %}>Editar</a>
+                Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}           
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        No se encontraron datos. Reintente.
+        {% endif %}
+    </p>
+    
 </body>
 
+{% endcomment %}
 {% endblock campos %}
 
 

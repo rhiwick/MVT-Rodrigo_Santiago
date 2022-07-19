@@ -19,33 +19,29 @@
 
 
 {% block campos %}
-<body>
-<p>
+
+{% block accion %}
     <form action= {% url 'busqueda_producto' %}>
+{% endblock accion %}
+
         {{form}}
         <button>Buscar</button>
     </form>
-</p>
-<p>
+<p></p>
+
     
 <p></p>
 <p></p>
 <p>Resultado de la busqueda:</p>
-<p>
     {% if productos_listado %}
     <ul>
         {%for producto in productos_listado%}
-        <li>Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
+        <li>{% block botones %}{% endblock botones %}Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
         {% endfor %}
     </ul>
     {% else %}
     No se encontraron datos. Reintente.
     {% endif %}
 
-</p>
 
-</body>
 {% endblock campos %}
-
-
-

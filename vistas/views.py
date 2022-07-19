@@ -1,7 +1,7 @@
 
 from email.policy import default
 from datetime import datetime
-from vistas.forms import FormCrearProducto, FormBusquedaProducto
+from vistas.forms import FormCrearProducto, FormBusquedaProducto, FormEliminarProducto, FormEditarProducto
 
 
 from django.shortcuts import render
@@ -43,7 +43,7 @@ def crear_producto(request):
 
 def busqueda_producto(request):
     id_producto = request.GET.get('producto_codigo')
-    productos_listado = Producto.objects.all()
+    #productos_listado = Producto.objects.all()
     
     if id_producto:
         productos_listado = Producto.objects.filter(producto_codigo=id_producto)
@@ -58,12 +58,31 @@ def busqueda_producto(request):
 def maestro_producto(request):
     return render(request, 'maestro.html')
 
+
+
+
 def editar_producto(request):
-    return render(request, 'editar_producto.html')
+    id_producto = request.GET.get('producto_codigo')
+    productos_listado = Producto.objects.all()
+    if id_producto:
+        productos_listado = Producto.objects.filter(producto_codigo=id_producto)
+    else:
+        productos_listado = Producto.objects.all()
+        form = FormEditarProducto()
+    form = FormEditarProducto()
+    return render(request, 'editar_producto.html' ,{'form':form,'productos_listado':productos_listado})
+
+
+
 
 def eliminar_producto(request):
     
-    
-    
-    
-    return render(request, 'eliminar_producto.html')
+    id_producto = request.GET.get('producto_codigo')
+    productos_listado = Producto.objects.all()
+    if id_producto:
+       productos_listado = Producto.objects.filter(producto_codigo=id_producto)
+    else:
+       productos_listado = Producto.objects.all()
+       form = FormEliminarProducto()
+    form = FormEliminarProducto()
+    return render(request, 'eliminar_producto.html', {'form':form,'productos_listado':productos_listado} )
