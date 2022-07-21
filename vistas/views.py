@@ -98,6 +98,7 @@ def edite_producto(request, id):
     if request.method == 'POST':
         form = FormEditarProducto(request.POST)
         if form.is_valid():
+            prod.producto_cia = form.cleaned_data.get('producto_cia')
             prod.producto_codigo = form.cleaned_data.get('producto_codigo')
             prod.producto_descripcion = form.cleaned_data.get('producto_descripcion')
             prod.producto_costo = form.cleaned_data.get('producto_costo')
@@ -107,8 +108,8 @@ def edite_producto(request, id):
         
         else:
             
-            return render(request, 'edite_producto.html', {'form': prod})
+            return render(request, 'edite_producto.html', {'form': form, 'producto':prod})
 
-    form_edicion = FormEditarProducto(initial={'producto_cia': prod.producto_cia,'producto_codigo': prod.producto_codigo, 'producto_descripcion': prod.producto_descripcion, 'producto_costo': prod.producto_costo})
+    form_producto = FormEditarProducto(initial={'producto_cia': prod.producto_cia,'producto_codigo': prod.producto_codigo, 'producto_descripcion': prod.producto_descripcion, 'producto_costo': prod.producto_costo})
     print('entre')
-    return render(request, 'edite_producto.html', {'form':form, 'prod':prod,})
+    return render(request, 'edite_producto.html', {'form':form_producto, 'producto':prod})

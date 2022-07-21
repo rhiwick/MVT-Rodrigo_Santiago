@@ -20,11 +20,9 @@
 {% endblock informacion %}
 
 {% block campos %}
-{{form}}
-<body>
-    <form action="/edite_producto/" method = "POST"> 
+{% comment %} <body>
+    <form action={% url 'edite_producto' producto.id %} method="post">
         {% csrf_token %}
-        
         <p>Edicion de productos:</p>
         <p>Nombre Compañía: <input type= 'text' name = 'producto_cia'></p>
         <p>Código de Producto: <input type= 'text' name = 'producto_codigo'></p>
@@ -34,7 +32,16 @@
  
     </form>
 
+</body> {% endcomment %}
+<body>
+    <p>
+        <form action={% url 'edite_producto' producto.id %} method="post">
+            {% csrf_token %}
+            <table>
+                {{form.as_table}}
+            </table>
+            <button>Editar</button>
+        </form>
+    </p>
 </body>
-
-
 {% endblock campos %}
