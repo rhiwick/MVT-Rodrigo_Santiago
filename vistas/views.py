@@ -4,7 +4,7 @@ from datetime import datetime
 from vistas.forms import FormCrearProducto, FormBusquedaProducto, FormEliminarProducto, FormEditarProducto
 
 
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from vistas.models import Producto
 
 from django.template import Template, Context, loader
@@ -61,6 +61,25 @@ def maestro_producto(request):
 
 
 
+        
+def eliminar_producto(request):
+    id_producto = request.GET.get('producto_codigo')
+    productos_listado = Producto.objects.all()
+    if id_producto:
+        productos_listado = Producto.objects.filter(producto_codigo=id_producto)
+    else:
+        productos_listado = Producto.objects.all()
+        form = FormEliminarProducto()
+    form = FormEliminarProducto()
+    return render(request, 'eliminar_producto.html', {'form':form,'productos_listado':productos_listado})
+
+def elimine_producto(request, id):
+    producto_a_eliminar = Producto.objects.get(id=id)
+    producto_a_eliminar.delete()
+    return redirect('eliminar_producto')
+
+
+
 def editar_producto(request):
     id_producto = request.GET.get('producto_codigo')
     productos_listado = Producto.objects.all()
@@ -68,21 +87,28 @@ def editar_producto(request):
         productos_listado = Producto.objects.filter(producto_codigo=id_producto)
     else:
         productos_listado = Producto.objects.all()
-        form = FormEditarProducto()
-    form = FormEditarProducto()
+        form = FormBusquedaProducto()
+    form = FormBusquedaProducto()
     return render(request, 'editar_producto.html' ,{'form':form,'productos_listado':productos_listado})
 
 
-
-
-def eliminar_producto(request):
+def edite_producto(request, id):
+    prod = Producto.objects.get(id=id)
     
-    id_producto = request.GET.get('producto_codigo')
-    productos_listado = Producto.objects.all()
-    if id_producto:
-       productos_listado = Producto.objects.filter(producto_codigo=id_producto)
-    else:
-       productos_listado = Producto.objects.all()
-       form = FormEliminarProducto()
-    form = FormEliminarProducto()
-    return render(request, 'eliminar_producto.html', {'form':form,'productos_listado':productos_listado} )
+    if request.method == 'POST':
+        form = FormEditarProducto(request.POST)
+        if form.is_valid():
+            prod.producto_codigo = form.cleaned_data.get('producto_codigo')
+            prod.producto_descripcion = form.cleaned_data.get('producto_descripcion')
+            prod.producto_costo = form.cleaned_data.get('producto_costo')
+            prod.save()
+            
+            return redirect('editar_producto')
+        
+        else:
+            
+            return render(request, 'edite_producto.html', {'form': prod})
+
+    form_edicion = FormEditarProducto(initial={'producto_cia': prod.producto_cia,'producto_codigo': prod.producto_codigo, 'producto_descripcion': prod.producto_descripcion, 'producto_costo': prod.producto_costo})
+    print('entre')
+    return render(request, 'edite_producto.html', {'form':form, 'prod':prod,})

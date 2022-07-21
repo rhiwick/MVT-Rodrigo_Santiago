@@ -9,3 +9,7 @@ class Producto(models.Model):
     producto_cantidad = models.IntegerField(null=0) #siempre empiezo en 0
     producto_costo = models.IntegerField(null=0)
     producto_fecha = models.DateTimeField(null=True)
+    
+    def __str__(self):
+        return f'{self.producto_codigo}'
+    

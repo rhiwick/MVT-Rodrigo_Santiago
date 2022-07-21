@@ -14,5 +14,8 @@ class FormEliminarProducto(forms.Form):
     producto_codigo = forms.CharField(max_length=30)
     
 class FormEditarProducto(forms.Form):
-    producto_codigo = forms.CharField(max_length=30)
+    producto_cia =  forms.CharField(max_length=30)
+    producto_codigo = forms.CharField()
+    producto_descripcion = forms.CharField(max_length=30)
+    producto_costo = forms.IntegerField(required=False)
     

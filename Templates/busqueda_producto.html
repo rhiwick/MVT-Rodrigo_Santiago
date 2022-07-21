@@ -24,6 +24,7 @@
     <form action= {% url 'busqueda_producto' %}>
 {% endblock accion %}
 
+{% block informacion %}
         {{form}}
         <button>Buscar</button>
     </form>
@@ -36,12 +37,12 @@
     {% if productos_listado %}
     <ul>
         {%for producto in productos_listado%}
-        <li>{% block botones %}{% endblock botones %}Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
+        <li>{% block Form %}{% endblock Form %}{% block botones %}{% endblock botones %}Compañia: {{producto.producto_cia}}- Código: {{producto.producto_codigo}}- Descripción: {{producto.producto_descripcion}}- Fecha Creacion: {{producto.producto_fecha}}</li>
         {% endfor %}
     </ul>
     {% else %}
     No se encontraron datos. Reintente.
     {% endif %}
-
+{% endblock informacion %}
 
 {% endblock campos %}

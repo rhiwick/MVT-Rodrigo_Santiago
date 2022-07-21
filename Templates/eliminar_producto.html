@@ -20,6 +20,10 @@
 <form action= {% url 'eliminar_producto' %}>
 {% endblock accion %}
 
+{% block Form %}
+{{producto}}
+{% endblock Form %}
+
 {% block botones %}
-<a href={% url 'eliminar_producto' %}>Eliminar</a>
+<a href={% url 'elimine_producto' producto.id %}>Eliminar</a>
 {% endblock botones %}
