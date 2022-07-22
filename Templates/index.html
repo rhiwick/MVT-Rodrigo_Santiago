@@ -31,7 +31,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Configuracion</a></li>
+                        <li><a class="dropdown-item" href={%url 'login'%}>Login</a></li>
                         <li><a class="dropdown-item" href="#!">Actividad reciente</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" href="#!">Desconectarse</a></li>
@@ -82,8 +82,10 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
+                
                 <main>
                     <div class="container-fluid px-4">
+                        {% block login %}
                         <p></p>
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
@@ -98,6 +100,7 @@
                             </div>
                             
                         </div>
+                        {% endblock login %}
                         {% block sub_titulo %}
                         <h1 class="mt-4">Sistema de almacenamiento y distribucion</h1>
                         {% endblock sub_titulo %}
